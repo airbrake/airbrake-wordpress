@@ -11,13 +11,12 @@ Version: 1.0
 License: 
 */
 
-
 global $wpdb;
 
 define( 'AW_TITLE', 'Airbrake Wordpress' );
 define( 'AW_SLUG', 'airbrake-wordpress' );
 
-define( 'AW_DOCROOT', dirname(__FILE__) );
+define( 'AW_DOCROOT', dirname( __FILE__ ) );
 define( 'AW_WEBROOT', str_replace( getcwd(), home_url(), dirname(__FILE__) ) );
 
 
@@ -35,17 +34,12 @@ if ( get_option('airbrake_wordpress_setting_status') ) {
 
 	$async = (boolean) get_option( 'airbrake_wordpress_setting_async' );
 	$timeout = (int) get_option( 'airbrake_wordpress_setting_timeout' );
-	$apiendpoint = trim( get_option( 'airbrake_wordpress_setting_apiendpoint' ) );
 	$warrings = get_option( 'airbrake_wordpress_setting_warrings' );
 
 	$options = array(
 		'async'   => $async,
 		'timeout' => $timeout,
 	);
-
-	if ( ! empty( $apiendpoint ) ) {
-		$options['apiendpoint'] = $host;
-	}
 
 	Airbrake\EventHandler::start( $apiKey, $warrings, $options );
 }
