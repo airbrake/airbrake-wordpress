@@ -1,0 +1,15 @@
+/*
+Airbrake Wordpress Plugin CSS.
+*/
+
+/* MENU */
+
+.toplevel_page_airbrake-wordpress div.wp-menu-image {
+	background-image: url(images/sidebar-icon.jpg);
+	background-position: -1px -33px;
+}
+
+.toplevel_page_airbrake-wordpress:hover div.wp-menu-image,
+.toplevel_page_airbrake-wordpress .wp-has-current-submenu div.wp-menu-image {
+	background-position: -1px -1px;
+}

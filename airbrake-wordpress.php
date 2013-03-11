@@ -4,11 +4,13 @@
 Plugin Name: airbrake-wordpress
 Description: Airbrake Wordpress
 
-Author: Fedor Vyushkov
+Author: Airbrake.io
 Author URI: https://github.com/airbrake/airbrake-wordpress
 
-Version: 1.0
-License: 
+Description: Airbrake lets you discover errors and bugs in your Wordpress install. 
+
+Version: 0.1
+License: GPL 
 */
 
 global $wpdb;
