@@ -16,6 +16,10 @@
 	</td>
         </tr>
         <tr valign="top">
+        <th scope="row">Project Id</th>
+        <td><input type="text" size="45" name="airbrake_wordpress_setting_projectid" value="<?php echo get_option( 'airbrake_wordpress_setting_projectid' ); ?>" /><br></td>
+        </tr>
+        <tr valign="top">
         <th scope="row">API Key</th>
         <td><input type="text" size="45" name="airbrake_wordpress_setting_apikey" value="<?php echo get_option( 'airbrake_wordpress_setting_apikey' ); ?>" /><br><p><a href="https://signup.airbrake.io/account/new?dev=true">Sign up for an Airbrake API Key</a></p></td>
         </tr>
@@ -47,7 +51,7 @@
         </tr>
     </table>
 <input type="hidden" name="action" value="update" />
-<input type="hidden" name="page_options" value="airbrake_wordpress_setting_status,airbrake_wordpress_setting_apikey,airbrake_wordpress_setting_timeout,airbrake_wordpress_setting_warrings,airbrake_wordpress_setting_async" />
+<input type="hidden" name="page_options" value="airbrake_wordpress_setting_status,airbrake_wordpress_setting_projectid,airbrake_wordpress_setting_apikey,airbrake_wordpress_setting_timeout,airbrake_wordpress_setting_warrings,airbrake_wordpress_setting_async" />
     
     <?php submit_button(); ?>
 
