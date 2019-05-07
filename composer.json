@@ -1,0 +1,16 @@
+{
+    "name": "airbrake/airbrake-wordpress",
+    "description": "Airbrake wordpress exception and error notifier for PHP",
+    "keywords": ["airbrake", "wordpress", "notifier", "exception", "error", "logging"],
+    "homepage": "https://airbrake.io",
+    "license": "MIT",
+    "require": {
+        "php": ">=5.4",
+        "airbrake/phpbrake": "^0.6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Airbrake\\": "./"
+        }
+    }
+}

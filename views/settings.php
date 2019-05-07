@@ -43,15 +43,11 @@
         <tr valign="top">
         <th scope="row">Asyncronous Notifications</th>
         <td>
-		<select name="airbrake_wordpress_setting_async">
-		  <option value="0"<?php echo !get_option( 'airbrake_wordpress_setting_async' ) ? ' selected="selected"': '';?>>No</option>
-		  <option value="1"<?php echo get_option( 'airbrake_wordpress_setting_async' ) ? ' selected="selected"': '';?>>Yes</option>
-		</select>
 	</td>
         </tr>
     </table>
 <input type="hidden" name="action" value="update" />
-<input type="hidden" name="page_options" value="airbrake_wordpress_setting_status,airbrake_wordpress_setting_projectid,airbrake_wordpress_setting_apikey,airbrake_wordpress_setting_timeout,airbrake_wordpress_setting_warrings,airbrake_wordpress_setting_async" />
+<input type="hidden" name="page_options" value="airbrake_wordpress_setting_status,airbrake_wordpress_setting_projectid,airbrake_wordpress_setting_apikey,airbrake_wordpress_setting_timeout,airbrake_wordpress_setting_warrings" />
     
     <?php submit_button(); ?>
 

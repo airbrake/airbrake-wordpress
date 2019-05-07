@@ -13,6 +13,8 @@ Version: 0.1
 License: GPL 
 */
 
+require __DIR__ . '/vendor/autoload.php';
+
 global $wpdb;
 
 define( 'AW_TITLE', 'Airbrake Wordpress' );
@@ -31,24 +33,18 @@ include 'classes/install.php';
 include 'classes/controller.php';
 
 if ( get_option('airbrake_wordpress_setting_status') ) {
-	require_once 'classes/phpbrake/src/Notifier.php';
-	require_once 'classes/phpbrake/src/Instance.php';
-	require_once 'classes/phpbrake/src/ErrorHandler.php';
-
 	$notifier = new Airbrake\Notifier([
-    	'projectId' => trim( get_option( 'airbrake_wordpress_setting_projectid' ) ),
-    	'projectKey' => trim( get_option( 'airbrake_wordpress_setting_apikey' ) )
+    	'projectId' => 105138,
+    	'projectKey' => 'ab34d9c2b6d3639bd3447139342ef181',
 	]);
-
-	throw new Exception(trim( get_option( 'airbrake_wordpress_setting_projectid' ) ));
 
 	Airbrake\Instance::set($notifier);
 
 	$handler = new Airbrake\ErrorHandler($notifier);
 	$handler->register();
 
-	set_error_handler([$this, 'onError'], error_reporting());
-	set_exception_handler([$this, 'onException']);
-	register_shutdown_function([$this, 'onShutdown']);
+	// set_error_handler([$this, 'onError'], error_reporting());
+	// set_exception_handler([$this, 'onException']);
+	// register_shutdown_function([$this, 'onShutdown']);
 }
 
