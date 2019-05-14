@@ -10,15 +10,15 @@
     <?php wp_nonce_field('update-options'); ?>
 
     <input type="hidden" name="action" value="update" />
-    <input type="hidden" name="page_options" value="airbrake_wordpress_setting_enabled,airbrake_wordpress_setting_project_id,airbrake_wordpress_setting_project_key" />
+    <input type="hidden" name="page_options" value="airbrake_wordpress_setting_disabled,airbrake_wordpress_setting_project_id,airbrake_wordpress_setting_project_key" />
 
     <table class="form-table">
       <tr valign="top">
         <th scope="row">Disabled</th>
         <td>
           <select name="airbrake_wordpress_setting_disabled">
-            <option value="true"<?php echo get_option('airbrake_wordpress_setting_disabled') ? ' selected="selected"' : ''; ?>>Yes</option>
-            <option value="false"<?php echo !get_option('airbrake_wordpress_setting_disabled') ? ' selected="selected"' : ''; ?>>No</option>
+            <option value="1"<?php echo get_option('airbrake_wordpress_setting_disabled') ? ' selected="selected"' : ''; ?>>Yes</option>
+            <option value="0"<?php echo !get_option('airbrake_wordpress_setting_disabled') ? ' selected="selected"' : ''; ?>>No</option>
           </select>
         </td>
       </tr>

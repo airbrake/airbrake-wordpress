@@ -27,7 +27,7 @@ register_deactivation_hook(__FILE__, 'airbrake_wordpress_uninstall');
 
 function airbrake_wordpress_install()
 {
-    add_option('airbrake_wordpress_setting_disabled', true, '', 'yes');
+    add_option('airbrake_wordpress_setting_disabled', '1', '', 'yes');
     add_option('airbrake_wordpress_setting_project_id', 'FIXME', '', 'yes');
     add_option('airbrake_wordpress_setting_project_key', 'FIXME', '', 'yes');
 }
@@ -62,6 +62,11 @@ if (get_option('airbrake_wordpress_setting_project_id') &&
         'projectId' => get_option('airbrake_wordpress_setting_project_id'),
         'projectKey' => get_option('airbrake_wordpress_setting_project_key'),
     ]);
+    $notifier->addFilter(function ($notice) {
+        $notice['params']['language'] = get_bloginfo('language');
+        $notice['params']['wordpress'] = get_bloginfo('version');
+        return $notice;
+    });
 
     Airbrake\Instance::set($notifier);
 
