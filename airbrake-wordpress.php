@@ -22,16 +22,18 @@ if (!class_exists('Airbrake\Notifier')) {
 
 //------------------------------------------------------------------------------
 
-register_activation_hook( __FILE__, 'airbrake_wordpress_install' );
-register_deactivation_hook( __FILE__, 'airbrake_wordpress_uninstall' );
+register_activation_hook(__FILE__, 'airbrake_wordpress_install');
+register_deactivation_hook(__FILE__, 'airbrake_wordpress_uninstall');
 
-function airbrake_wordpress_install() {
+function airbrake_wordpress_install()
+{
     add_option('airbrake_wordpress_setting_disabled', true, '', 'yes');
     add_option('airbrake_wordpress_setting_project_id', 'FIXME', '', 'yes');
     add_option('airbrake_wordpress_setting_project_key', 'FIXME', '', 'yes');
 }
 
-function airbrake_wordpress_uninstall() {
+function airbrake_wordpress_uninstall()
+{
     delete_option('airbrake_wordpress_setting_disabled');
     delete_option('airbrake_wordpress_setting_project_id');
     delete_option('airbrake_wordpress_setting_project_key');
@@ -41,11 +43,13 @@ function airbrake_wordpress_uninstall() {
 
 add_action('admin_menu', 'airbrake_wordpress_admin_menu');
 
-function airbrake_wordpress_admin_menu() {
+function airbrake_wordpress_admin_menu()
+{
     add_menu_page(AW_TITLE, 'Airbrake', 'administrator', AW_SLUG, 'airbrake_wordpress_settings');
 }
 
-function airbrake_wordpress_settings() {
+function airbrake_wordpress_settings()
+{
     include __DIR__ . '/views/settings.php';
 }
 
