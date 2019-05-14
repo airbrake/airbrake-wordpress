@@ -1,3 +1,0 @@
-[submodule "classes/airbrake-php"]
-	path = classes/airbrake-php
-	url = git://github.com/airbrake/airbrake-php.git

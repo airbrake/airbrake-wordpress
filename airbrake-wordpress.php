@@ -7,42 +7,60 @@ Description: Airbrake Wordpress
 Author: Airbrake.io
 Author URI: https://github.com/airbrake/airbrake-wordpress
 
-Description: Airbrake lets you discover errors and bugs in your Wordpress install. 
+Description: Airbrake lets you discover errors and bugs in your Wordpress install.
 
 Version: 0.1
-License: GPL 
+License: GPL
 */
 
-global $wpdb;
+define('AW_TITLE', 'Airbrake Wordpress');
+define('AW_SLUG', 'airbrake-wordpress');
 
-define( 'AW_TITLE', 'Airbrake Wordpress' );
-define( 'AW_SLUG', 'airbrake-wordpress' );
+if (!class_exists('Airbrake\Notifier')) {
+    require_once __DIR__ . '/vendor/autoload.php';
+}
 
-define( 'AW_DOCROOT', dirname( __FILE__ ) );
-define( 'AW_WEBROOT', str_replace( getcwd(), home_url(), dirname(__FILE__) ) );
-
+//------------------------------------------------------------------------------
 
 register_activation_hook( __FILE__, 'airbrake_wordpress_install' );
 register_deactivation_hook( __FILE__, 'airbrake_wordpress_uninstall' );
 
-add_action( 'admin_menu', 'airbrake_wordpress_admin_menu' );
-
-include 'classes/install.php';
-include 'classes/controller.php';
-
-if ( get_option('airbrake_wordpress_setting_status') ) {
-	require_once 'classes/airbrake-php/src/Airbrake/EventHandler.php';
-	$apiKey  = trim( get_option( 'airbrake_wordpress_setting_apikey' ) );
-
-	$async = (boolean) get_option( 'airbrake_wordpress_setting_async' );
-	$timeout = (int) get_option( 'airbrake_wordpress_setting_timeout' );
-	$warrings = get_option( 'airbrake_wordpress_setting_warrings' );
-
-	$options = array(
-		'async'   => $async,
-		'timeout' => $timeout,
-	);
-
-	Airbrake\EventHandler::start( $apiKey, $warrings, $options );
+function airbrake_wordpress_install() {
+    add_option('airbrake_wordpress_setting_disabled', true, '', 'yes');
+    add_option('airbrake_wordpress_setting_project_id', 'FIXME', '', 'yes');
+    add_option('airbrake_wordpress_setting_project_key', 'FIXME', '', 'yes');
 }
 
+function airbrake_wordpress_uninstall() {
+    delete_option('airbrake_wordpress_setting_disabled');
+    delete_option('airbrake_wordpress_setting_project_id');
+    delete_option('airbrake_wordpress_setting_project_key');
+}
+
+//------------------------------------------------------------------------------
+
+add_action('admin_menu', 'airbrake_wordpress_admin_menu');
+
+function airbrake_wordpress_admin_menu() {
+    add_menu_page(AW_TITLE, 'Airbrake', 'administrator', AW_SLUG, 'airbrake_wordpress_settings');
+}
+
+function airbrake_wordpress_settings() {
+    include __DIR__ . '/views/settings.php';
+}
+
+//------------------------------------------------------------------------------
+
+if (get_option('airbrake_wordpress_setting_project_id') &&
+    get_option('airbrake_wordpress_setting_project_key') &&
+    !get_option('airbrake_wordpress_setting_disabled')) {
+    $notifier = new Airbrake\Notifier([
+        'projectId' => get_option('airbrake_wordpress_setting_project_id'),
+        'projectKey' => get_option('airbrake_wordpress_setting_project_key'),
+    ]);
+
+    Airbrake\Instance::set($notifier);
+
+    $handler = new Airbrake\ErrorHandler($notifier);
+    $handler->register();
+}
