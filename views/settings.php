@@ -4,7 +4,7 @@
 
   <p>Airbrake is a tool that collects and aggregates errors for webapps. This Plugin makes it simple to track PHP errors in your Wordpress install. Once installed it'll collect all errors with the Wordpress Core and Wordpress Plugins.</p>
 
-  <p>This plugin requires an Airbrake account. Sign up for a <a href="https://signup.airbrake.io/account/new?dev=true">Paid</a> or a <a href="https://signup.airbrake.io/account/new/Free">Free account</a>.</p>
+  <p>This plugin requires an Airbrake account. Sign up for an <a href="https://airbrake.io/pricing">account</a>.</p>
 
   <form method="post" action="options.php">
     <?php wp_nonce_field('update-options'); ?>
