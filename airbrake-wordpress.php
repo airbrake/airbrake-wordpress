@@ -9,8 +9,8 @@ Author URI: https://github.com/airbrake/airbrake-wordpress
 
 Description: Airbrake lets you discover errors and bugs in your Wordpress install.
 
-Version: 0.1
-License: GPL
+Version: 0.2
+License: MIT
 */
 
 define('AW_TITLE', 'Airbrake Wordpress');
