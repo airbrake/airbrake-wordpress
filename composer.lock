@@ -1,23 +1,23 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "58332e613bd30d4cc88a0e78bde59d9e",
+    "content-hash": "07a8ff2f05ab5b0a352bbbd2216de428",
     "packages": [
         {
             "name": "airbrake/phpbrake",
-            "version": "v0.6.2",
+            "version": "v0.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/airbrake/phpbrake.git",
-                "reference": "3191d69e7d4eabfd0b08db737f48d6f92bc3854d"
+                "reference": "7c6c5ab73b6f4749a905aa2831263fe17fb72cce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/airbrake/phpbrake/zipball/3191d69e7d4eabfd0b08db737f48d6f92bc3854d",
-                "reference": "3191d69e7d4eabfd0b08db737f48d6f92bc3854d",
+                "url": "https://api.github.com/repos/airbrake/phpbrake/zipball/7c6c5ab73b6f4749a905aa2831263fe17fb72cce",
+                "reference": "7c6c5ab73b6f4749a905aa2831263fe17fb72cce",
                 "shasum": ""
             },
             "require": {
@@ -57,7 +57,7 @@
                 "logging",
                 "notifier"
             ],
-            "time": "2019-05-07T15:48:14+00:00"
+            "time": "2019-06-29T07:50:14+00:00"
         },
         {
             "name": "cash/lrucache",
